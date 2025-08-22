@@ -1,30 +1,6 @@
-/////OG CODE /////////////////
-
-// import { NavLink } from "react-router-dom";
-// import ProfileButton from "./ProfileButton";
-// import "./Navigation.css";
-
-// function Navigation() {
-//   return (
-//     <ul>
-//       <li>
-//         <NavLink to="/">Home</NavLink>
-//       </li>
-
-//       <li>
-//         <ProfileButton />
-//       </li>
-//     </ul>
-//   );
-// }
-
-// export default Navigation;
+///// ---- OG CODE       -------------- ///
 
 
-
-
-
-/// --- i like this one ----
 
 // import { NavLink } from "react-router-dom";
 // import { useSelector } from "react-redux";
@@ -62,10 +38,6 @@
 
 
 
-
-
-
-
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
@@ -73,6 +45,8 @@ import "./Navigation.css";
 
 function Navigation() {
   const sessionUser = useSelector((state) => state.session.user);
+  const cart = useSelector((state) => state.cart); // get cart items
+  const cartCount = cart.reduce((acc, item) => acc + item.quantity, 0); // total items
 
   return (
     <ul className="nav-list">
@@ -90,6 +64,12 @@ function Navigation() {
           </li>
         </>
       )}
+
+      <li>
+        <NavLink to="/cart">
+          Cart {cartCount > 0 && <span>({cartCount})</span>}
+        </NavLink>
+      </li>
 
       <li>
         <ProfileButton />

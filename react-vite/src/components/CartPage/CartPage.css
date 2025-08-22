@@ -1,0 +1,33 @@
+.cart-page {
+  padding: 20px;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+}
+
+.cart-item-image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+}
+
+.cart-item-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-item-buttons button {
+  margin-right: 5px;
+}
+
+.clear-cart {
+  margin-top: 20px;
+  padding: 10px 15px;
+  cursor: pointer;
+}

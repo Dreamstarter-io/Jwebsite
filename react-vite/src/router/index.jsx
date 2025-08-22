@@ -46,6 +46,111 @@
 // ]);
 
 
+// ------ OG CODE -----------------------------//
+
+
+
+// import { createBrowserRouter } from 'react-router-dom';
+// import LoginFormPage from '../components/LoginFormPage';
+// import SignupFormPage from '../components/SignupFormPage';
+// import ProductFormPage from '../components/ProductFormPage';
+// import ProductManagePage from '../components/ProductManage/ProductManagePage';
+// import ProductShowPage from '../components/ProductShowPage/ProductShowPage';
+// import ProductUpdatePage from '../components/ProductUpdatePage/ProductUpdatePage';
+// import LandingPage from '../components/LandingPage'; // ✅ Add this import
+// import Layout from './Layout';
+
+// export const router = createBrowserRouter([
+//   {
+//     element: <Layout />,
+//     children: [
+//       {
+//         path: "/",
+//         element: <LandingPage />,
+//       },
+//       {
+//         path: "login",
+//         element: <LoginFormPage />,
+//       },
+//       {
+//         path: "signup",
+//         element: <SignupFormPage />,
+//       },
+//       {
+//         path: "products/new",
+//         element: <ProductFormPage />,
+//       },
+//       {
+//         path: "products/manage",
+//         element: <ProductManagePage />,
+//       },
+//       {
+//         path: "products/:productId",
+//         element: <ProductShowPage />,
+//       },
+//       {
+//         path: "products/:productId/edit",
+//         element: <ProductUpdatePage />,
+//       },
+//     ],
+//   },
+// ]);
+
+
+// import { createBrowserRouter } from 'react-router-dom';
+// import LoginFormPage from '../components/LoginFormPage';
+// import SignupFormPage from '../components/SignupFormPage';
+// import ProductFormPage from '../components/ProductFormPage';
+// import ProductManagePage from '../components/ProductManage/ProductManagePage';
+// import ProductShowPage from '../components/ProductShowPage/ProductShowPage';
+// import ProductUpdatePage from '../components/ProductUpdatePage/ProductUpdatePage';
+// import LandingPage from '../components/LandingPage';
+// import CartPage from '../components/CartPage/CartPage'; // ✅ import CartPage
+// import Layout from './Layout';
+
+// export const router = createBrowserRouter([
+//   {
+//     element: <Layout />,
+//     children: [
+//       {
+//         path: "/",
+//         element: <LandingPage />,
+//       },
+//       {
+//         path: "login",
+//         element: <LoginFormPage />,
+//       },
+//       {
+//         path: "signup",
+//         element: <SignupFormPage />,
+//       },
+//       {
+//         path: "products/new",
+//         element: <ProductFormPage />,
+//       },
+//       {
+//         path: "products/manage",
+//         element: <ProductManagePage />,
+//       },
+//       {
+//         path: "products/:productId",
+//         element: <ProductShowPage />,
+//       },
+//       {
+//         path: "products/:productId/edit",
+//         element: <ProductUpdatePage />,
+//       },
+//       {
+//         path: "cart",                // ✅ new cart route
+//         element: <CartPage />,
+//       },
+//     ],
+//   },
+// ]);
+
+
+
+
 import { createBrowserRouter } from 'react-router-dom';
 import LoginFormPage from '../components/LoginFormPage';
 import SignupFormPage from '../components/SignupFormPage';
@@ -53,7 +158,9 @@ import ProductFormPage from '../components/ProductFormPage';
 import ProductManagePage from '../components/ProductManage/ProductManagePage';
 import ProductShowPage from '../components/ProductShowPage/ProductShowPage';
 import ProductUpdatePage from '../components/ProductUpdatePage/ProductUpdatePage';
-import LandingPage from '../components/LandingPage'; // ✅ Add this import
+import LandingPage from '../components/LandingPage';
+import CartPage from '../components/CartPage/CartPage'; // ✅ import CartPage
+import CartCheckout from '../components/CartCheckout/CartCheckout'; // ✅ import CartCheckout
 import Layout from './Layout';
 
 export const router = createBrowserRouter([
@@ -87,6 +194,14 @@ export const router = createBrowserRouter([
       {
         path: "products/:productId/edit",
         element: <ProductUpdatePage />,
+      },
+      {
+        path: "cart",                // ✅ new cart route
+        element: <CartPage />,
+      },
+      {
+        path: "checkout",            // ✅ checkout route
+        element: <CartCheckout />,
       },
     ],
   },
