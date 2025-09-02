@@ -13,3 +13,4 @@ from .review import Review
 from .shoppingcart import ShoppingCart
 from .wishlist import Wishlist
 from .user import User
+from .paypal import PayPalOrder
