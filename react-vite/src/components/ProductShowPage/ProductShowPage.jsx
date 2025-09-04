@@ -996,6 +996,241 @@
 
 // export default ProductShowPage;
 
+
+
+
+
+
+
+
+//? -----------WORKING ----------
+
+// import { useParams } from "react-router-dom";
+// import { useEffect, useState } from "react";
+// import { useDispatch, useSelector } from "react-redux";
+// import { addToCartLocal, addToCart } from "../../redux/cart";
+// import "./ProductShowPage.css";
+
+// function ProductShowPage() {
+//   const { productId } = useParams();
+//   const [product, setProduct] = useState(null);
+//   const dispatch = useDispatch();
+//   const sessionUser = useSelector((state) => state.session.user);
+//   const cart = useSelector((state) => state.cart);
+
+//   useEffect(() => {
+//     fetch(`http://localhost:5000/api/products/${productId}`)
+//       .then((res) => res.json())
+//       .then((data) => {
+//         if (data.price) data.price = Number(data.price);
+//         setProduct(data);
+//       })
+//       .catch((err) => console.error("Failed to load product:", err));
+//   }, [productId]);
+
+//   if (!product) return <p>Loading...</p>;
+
+//   const handleAddToCart = async () => {
+//     const existingItem = cart.find((item) => item.id === product.id);
+//     const quantityToAdd = 1; // always add 1 at a time
+
+//     if (sessionUser) {
+//       const newQuantity = existingItem ? Number(existingItem.quantity) + 1 : quantityToAdd;
+//       dispatch(addToCart(product.id, newQuantity));
+//     } else {
+//       if (existingItem) {
+//         dispatch(
+//           addToCartLocal({
+//             ...existingItem,
+//             quantity: Number(existingItem.quantity) + 1,
+//           })
+//         );
+//       } else {
+//         dispatch(
+//           addToCartLocal({
+//             id: product.id,
+//             title: product.title,
+//             price: Number(product.price || 0),
+//             cover_image_url: product.cover_image_url,
+//             quantity: quantityToAdd,
+//           })
+//         );
+//       }
+//     }
+//   };
+
+//   const handleAddToWishlist = async () => {
+//     if (!sessionUser) return;
+//     try {
+//       await fetch("http://localhost:5000/api/wishlist", {
+//         method: "POST",
+//         headers: { "Content-Type": "application/json" },
+//         credentials: "include",
+//         body: JSON.stringify({ product_id: product.id }),
+//       });
+//     } catch (err) {
+//       console.error(err);
+//     }
+//   };
+
+//   return (
+//     <div className="product-show-page">
+//       <div className="product-show-main">
+//         <div className="product-image-section">
+//           <img
+//             src={product.cover_image_url}
+//             alt={product.title}
+//             className="product-image"
+//           />
+//           <div className="action-buttons">
+//             <button className="cart-button" onClick={handleAddToCart}>
+//               Add to Cart
+//             </button>
+//             <button className="wishlist-button" onClick={handleAddToWishlist}>
+//               Add to Wishlist
+//             </button>
+//           </div>
+//         </div>
+
+//         <div className="product-info-section">
+//           <h1>{product.title}</h1>
+//           <h3>By: {product.seller?.username || "Artist name"}</h3>
+
+//           <div className="featured-track">
+//             <button
+//               className="play-button"
+//               onClick={() => alert("Feature coming soon!")}
+//             >
+//               ▶
+//             </button>
+//             <span> Featured Track</span>
+//           </div>
+
+//           <h4>Digital Album</h4>
+//           <div className="product-description">{product.description}</div>
+//           <div className="product-price">${(product.price || 0).toFixed(2)}</div>
+//         </div>
+//       </div>
+
+//       <div className="reviews-section">
+//         <h3>Reviews</h3>
+//         <p><em>Be the first to review this album!</em></p>
+//         <p>“Review feature coming soon”</p>
+//       </div>
+//     </div>
+//   );
+// }
+
+// export default ProductShowPage;
+
+
+
+//?-----------------WORKING ------------------ ^^^^^^
+
+
+
+
+
+
+
+
+// ------ OK
+
+// import { useParams } from "react-router-dom";
+// import { useEffect, useState } from "react";
+// import { useDispatch, useSelector } from "react-redux";
+// import { addToCartLocal, addToCart } from "../../redux/cart";
+// import "./ProductShowPage.css";
+
+// function ProductShowPage() {
+//   const { productId } = useParams();
+//   const [product, setProduct] = useState(null);
+//   const dispatch = useDispatch();
+//   const sessionUser = useSelector((state) => state.session.user);
+//   const cart = useSelector((state) => state.cart);
+
+//   useEffect(() => {
+//     fetch(`http://localhost:5000/api/products/${productId}`)
+//       .then((res) => res.json())
+//       .then((data) => {
+//         if (data.price) data.price = Number(data.price);
+//         setProduct(data);
+//       })
+//       .catch((err) => console.error("Failed to load product:", err));
+//   }, [productId]);
+
+//   if (!product) return <p>Loading...</p>;
+
+//   const handleAddToCart = () => {
+//     const existingItem = cart.find((item) => item.id === product.id);
+//     const quantityToAdd = 1;
+
+//     if (sessionUser) {
+//       const newQuantity = existingItem ? Number(existingItem.quantity) + 1 : quantityToAdd;
+//       dispatch(addToCart(product.id, newQuantity));
+//     } else {
+//       if (existingItem) {
+//         dispatch(
+//           addToCartLocal({
+//             ...existingItem,
+//             quantity: Number(existingItem.quantity) + 1,
+//           })
+//         );
+//       } else {
+//         dispatch(
+//           addToCartLocal({
+//             id: product.id,
+//             title: product.title,
+//             price: Number(product.price ?? 0),
+//             cover_image_url: product.cover_image_url,
+//             quantity: quantityToAdd,
+//           })
+//         );
+//       }
+//     }
+//   };
+
+//   return (
+//     <div className="product-show-page">
+//       <div className="product-show-main">
+//         <div className="product-image-section">
+//           <img className="product-image" src={product.cover_image_url} alt={product.title} />
+//           <button className="cart-button" onClick={handleAddToCart}>
+//             Add to Cart
+//           </button>
+//         </div>
+//         <div className="product-info-section">
+//           <h1 className="product-title">{product.title}</h1>
+//           <h3 className="product-seller">By {product.seller?.username || "Artist Name"}</h3>
+//           <div className="product-price">${(product.price ?? 0).toFixed(2)}</div>
+//           <div className="product-description">{product.description}</div>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }
+
+// export default ProductShowPage;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -1021,9 +1256,9 @@ function ProductShowPage() {
 
   if (!product) return <p>Loading...</p>;
 
-  const handleAddToCart = async () => {
+  const handleAddToCart = () => {
     const existingItem = cart.find((item) => item.id === product.id);
-    const quantityToAdd = 1; // always add 1 at a time
+    const quantityToAdd = 1;
 
     if (sessionUser) {
       const newQuantity = existingItem ? Number(existingItem.quantity) + 1 : quantityToAdd;
@@ -1041,7 +1276,7 @@ function ProductShowPage() {
           addToCartLocal({
             id: product.id,
             title: product.title,
-            price: Number(product.price || 0),
+            price: Number(product.price ?? 0),
             cover_image_url: product.cover_image_url,
             quantity: quantityToAdd,
           })
@@ -1050,63 +1285,24 @@ function ProductShowPage() {
     }
   };
 
-  const handleAddToWishlist = async () => {
-    if (!sessionUser) return;
-    try {
-      await fetch("http://localhost:5000/api/wishlist", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        credentials: "include",
-        body: JSON.stringify({ product_id: product.id }),
-      });
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
   return (
     <div className="product-show-page">
       <div className="product-show-main">
+        {/* Left: image */}
         <div className="product-image-section">
-          <img
-            src={product.cover_image_url}
-            alt={product.title}
-            className="product-image"
-          />
-          <div className="action-buttons">
-            <button className="cart-button" onClick={handleAddToCart}>
-              Add to Cart
-            </button>
-            <button className="wishlist-button" onClick={handleAddToWishlist}>
-              Add to Wishlist
-            </button>
-          </div>
+          <img className="product-image" src={product.cover_image_url} alt={product.title} />
         </div>
 
+        {/* Right: info */}
         <div className="product-info-section">
-          <h1>{product.title}</h1>
-          <h3>By: {product.seller?.username || "Artist name"}</h3>
-
-          <div className="featured-track">
-            <button
-              className="play-button"
-              onClick={() => alert("Feature coming soon!")}
-            >
-              ▶
-            </button>
-            <span> Featured Track</span>
-          </div>
-
-          <h4>Digital Album</h4>
+          <h1 className="product-title">{product.title}</h1>
+          <h3 className="product-seller">By {product.seller?.username || "Artist Name"}</h3>
+          <div className="product-price">${(product.price ?? 0).toFixed(2)}</div>
           <div className="product-description">{product.description}</div>
-          <div className="product-price">${(product.price || 0).toFixed(2)}</div>
+          <button className="cart-button" onClick={handleAddToCart}>
+            Add to Cart
+          </button>
         </div>
-      </div>
-
-      <div className="reviews-section">
-        <h3>Reviews</h3>
-        <p><em>Be the first to review this album!</em></p>
-        <p>“Review feature coming soon”</p>
       </div>
     </div>
   );
